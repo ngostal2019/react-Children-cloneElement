@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import * as React from "react";
 
-function App() {
+const Row = ({children, spacing}) => {
+  const childStyle = {
+    marginLeft: `${spacing}px`,
+  }
+
+  return (
+    <div className='Row'>
+      {React.Children.map(children, (child, index) => {
+        return React.cloneElement(child, {
+          style: {
+            ...child.props.style,
+            ...(index > 0 ? childStyle : {})
+          },
+        });
+      })}
+    </div>
+  )
+}
+
+function LiveOrders() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Row spacing={32}>
+        <p>Pizza Margarita</p>
+        <p>2</p>
+        <p>$30</p>
+        <p>18:30</p>
+        <p>John</p>
+      </Row>
     </div>
   );
 }
 
-export default App;
+export default LiveOrders;

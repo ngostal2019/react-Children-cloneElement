@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.Row {
+  background-color: #61dafb;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 15vh;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
